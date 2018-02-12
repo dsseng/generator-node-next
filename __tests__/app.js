@@ -1,6 +1,7 @@
 'use strict';
 const path = require('path');
 const assert = require('yeoman-assert');
+const fs = require('fs');
 const helpers = require('yeoman-test');
 
 describe('generator-node-next:app', () => {
@@ -12,6 +13,10 @@ describe('generator-node-next:app', () => {
 
   it('creates files with correct content', () => {
     assert.file(['dummyfile.txt']);
-    assert.fileContent('dummyfile.txt', 'Hi!\r\nYes');
+    assert.equal(
+      fs.readFileSync('dummyfile.txt', 'utf-8').includes('Hi!') &&
+        fs.readFileSync('dummyfile.txt', 'utf-8').includes('Yes'),
+      true
+    );
   });
 });
