@@ -12,6 +12,6 @@ describe('generator-node-next:app', () => {
 
   it('creates files with correct content', () => {
     assert.file(['dummyfile.txt']);
-    assert.fileContent('dummyfile.txt', 'Hi!\r\nYes\r\n');
+    assert.fileContent('dummyfile.txt', 'Hi!\r\nYes');
   });
 });
