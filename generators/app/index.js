@@ -16,6 +16,12 @@ module.exports = class extends Generator {
         name: 'someAnswer',
         message: 'Would you like to enable this option?',
         default: true
+      },
+      {
+        type: 'input',
+        name: 'someText',
+        message: 'Text:',
+        default: 'Hello, World!'
       }
     ];
 
@@ -26,13 +32,18 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copy(
+    this.fs.copyTpl(
       this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt')
+      this.destinationPath('dummyfile.txt'),
+      { title: this.props.someText, yesNo: this.props.someAnswer }
     );
   }
 
   install() {
-    this.installDependencies();
+    this.installDependencies({
+      npm: false,
+      bower: false,
+      yarn: true
+    });
   }
 };
