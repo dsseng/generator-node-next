@@ -4,4 +4,6 @@ node_js:
   - v8
   - v6
   - v4
+install:
+  yarn
 after_script: cat ./coverage/lcov.info | coveralls
