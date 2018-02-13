@@ -40,7 +40,7 @@ module.exports = class extends Generator {
         name: 'packageManager',
         message: 'Package manager to install dependencies with:',
         default: 'yarn',
-        choises: ['yarn', 'npm']
+        choices: ['yarn', 'npm']
       }
     ];
 
