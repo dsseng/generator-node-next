@@ -34,6 +34,13 @@ module.exports = class extends Generator {
         name: 'author',
         message: 'Author (your name or nickname):',
         default: 'Jonh Doe'
+      },
+      {
+        type: 'list',
+        name: 'packageManager',
+        message: 'Package manager to install dependencies with:',
+        default: 'yarn',
+        choises: ['yarn', 'npm']
       }
     ];
 
@@ -70,10 +77,18 @@ module.exports = class extends Generator {
   }
 
   install() {
-    this.installDependencies({
-      npm: false,
-      bower: false,
-      yarn: true
-    });
+    if (this.props.packageManager === 'yarn') {
+      this.installDependencies({
+        npm: false,
+        bower: false,
+        yarn: true
+      }); // Use yarn
+    } else {
+      this.installDependencies({
+        npm: true,
+        bower: false,
+        yarn: false
+      }); // Use npm
+    }
   }
 };
