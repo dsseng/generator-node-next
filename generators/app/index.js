@@ -13,15 +13,27 @@ module.exports = class extends Generator {
     const prompts = [
       {
         type: 'confirm',
-        name: 'someAnswer',
-        message: 'Would you like to enable this option?',
+        name: 'unit',
+        message: 'Would you like to enable unit tests (Jest)?',
         default: true
       },
       {
         type: 'input',
-        name: 'someText',
-        message: 'Text:',
+        name: 'name',
+        message: 'Name:',
+        default: 'my-awesome-app'
+      },
+      {
+        type: 'input',
+        name: 'descr',
+        message: 'Description:',
         default: 'Hello, World!'
+      },
+      {
+        type: 'input',
+        name: 'author',
+        message: 'Author (your name or nickname):',
+        default: 'Jonh Doe'
       }
     ];
 
@@ -32,11 +44,24 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath('dummyfile.txt'),
-      this.destinationPath('dummyfile.txt'),
-      { title: this.props.someText, yesNo: this.props.someAnswer }
-    );
+    let ins = [
+      'package.json.ejs',
+      '.eslintrc.ejs',
+      '.eslintignore.ejs',
+      '.gitignore.ejs',
+      'README.md.ejs'
+    ];
+    let outs = ['package.json', '.eslintrc', '.eslintignore', '.gitignore', 'README.md'];
+    ins.forEach((inp, i) => {
+      this.fs.copyTpl(this.templatePath(inp), this.destinationPath(outs[i]), this.props);
+    });
+
+    this.fs.copy(this.templatePath('.babelrc'), this.destinationPath('.babelrc'));
+    this.fs.copy(this.templatePath('src'), this.destinationPath('src'));
+
+    if (this.props.unit) {
+      this.fs.copy(this.templatePath('__tests__'), this.destinationPath('__tests__'));
+    }
   }
 
   install() {
