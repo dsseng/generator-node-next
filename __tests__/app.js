@@ -16,6 +16,8 @@ describe('generator-node-next:app', () => {
       '.gitignore',
       'README.md',
       '.babelrc',
+      '.editorconfig',
+      '.travis.yml',
       'src/index.js',
       'src/sum.js',
       '__tests__/sum.spec.js'

@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - v9
+  - v8
+  - v6
+install:
+  yarn
+after_script: cat ./coverage/lcov.info | coveralls

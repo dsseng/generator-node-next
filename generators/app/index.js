@@ -57,6 +57,11 @@ module.exports = class extends Generator {
     });
 
     this.fs.copy(this.templatePath('.babelrc'), this.destinationPath('.babelrc'));
+    this.fs.copy(
+      this.templatePath('.editorconfig'),
+      this.destinationPath('.editorconfig')
+    );
+    this.fs.copy(this.templatePath('.travis.yml'), this.destinationPath('.travis.yml'));
     this.fs.copy(this.templatePath('src'), this.destinationPath('src'));
 
     if (this.props.unit) {
