@@ -38,8 +38,8 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'author',
-        message: 'Author (your name or nickname):',
-        default: 'Jonh Doe'
+        message: 'Author (your nickname on github):',
+        default: 'sh7dm'
       },
       {
         type: 'list',
