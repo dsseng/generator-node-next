@@ -26,13 +26,13 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'name',
-        message: 'Name:',
+        message: 'Name of your app:',
         default: 'my-awesome-app'
       },
       {
         type: 'input',
         name: 'descr',
-        message: 'Description:',
+        message: 'Description of your app:',
         default: 'Hello, World!'
       },
       {
