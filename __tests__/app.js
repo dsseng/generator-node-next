@@ -20,7 +20,8 @@ describe('generator-node-next:app', () => {
       '.travis.yml',
       'src/index.js',
       'src/sum.js',
-      '__tests__/sum.spec.js'
+      '__tests__/sum.spec.js',
+      'Dockerfile'
     ]);
   });
 });
