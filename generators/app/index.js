@@ -75,6 +75,7 @@ module.exports = class extends Generator {
       this.destinationPath('.editorconfig')
     );
     this.fs.copy(this.templatePath('.travis.yml'), this.destinationPath('.travis.yml'));
+    this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'));
     this.fs.copy(this.templatePath('src'), this.destinationPath('src'));
 
     if (this.props.unit) {
