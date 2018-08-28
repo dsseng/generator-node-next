@@ -18,12 +18,6 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: 'confirm',
-        name: 'unit',
-        message: 'Would you like to enable unit tests (Jest)?',
-        default: true
-      },
-      {
         type: 'input',
         name: 'name',
         message: 'Name of your app:',
@@ -47,6 +41,30 @@ module.exports = class extends Generator {
         message: 'Package manager to install dependencies with:',
         default: 'yarn',
         choices: ['yarn', 'npm']
+      },
+      {
+        type: 'confirm',
+        name: 'unit',
+        message: 'Would you like to enable unit tests (Jest)?',
+        default: true
+      },
+      {
+        type: 'confirm',
+        name: 'docker',
+        message: 'Would you like to enable Docker deployment?',
+        default: true
+      },
+      {
+        type: 'confirm',
+        name: 'travis',
+        message: 'Would you like to enable Travis CI?',
+        default: true
+      },
+      {
+        type: 'confirm',
+        name: 'minify',
+        message: 'Would you like to enable code minification?',
+        default: true
       }
     ];
 
@@ -62,24 +80,35 @@ module.exports = class extends Generator {
       '.eslintrc.ejs',
       '.eslintignore.ejs',
       '.gitignore.ejs',
-      'README.md.ejs'
+      'README.md.ejs',
+      '.babelrc.ejs'
     ];
-    let outs = ['package.json', '.eslintrc', '.eslintignore', '.gitignore', 'README.md'];
+    let outs = [
+      'package.json',
+      '.eslintrc',
+      '.eslintignore',
+      '.gitignore',
+      'README.md',
+      '.babelrc'
+    ];
     ins.forEach((inp, i) => {
       this.fs.copyTpl(this.templatePath(inp), this.destinationPath(outs[i]), this.props);
     });
 
-    this.fs.copy(this.templatePath('.babelrc'), this.destinationPath('.babelrc'));
     this.fs.copy(
       this.templatePath('.editorconfig'),
       this.destinationPath('.editorconfig')
     );
-    this.fs.copy(this.templatePath('.travis.yml'), this.destinationPath('.travis.yml'));
-    this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'));
     this.fs.copy(this.templatePath('src'), this.destinationPath('src'));
 
     if (this.props.unit) {
       this.fs.copy(this.templatePath('__tests__'), this.destinationPath('__tests__'));
+    }
+    if (this.props.docker) {
+      this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'));
+    }
+    if (this.props.travis) {
+      this.fs.copy(this.templatePath('.travis.yml'), this.destinationPath('.travis.yml'));
     }
   }
 
