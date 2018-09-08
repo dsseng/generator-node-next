@@ -19,6 +19,7 @@
     "yeoman-generator"
   ],
   "devDependencies": {
+    "commitizen": "^2.10.1",
     "coveralls": "^3.0.2",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.10.0",
@@ -48,7 +49,8 @@
     "prepublish": "nsp check",
     "pretest": "eslint .",
     "precommit": "lint-staged",
-    "test": "jest"
+    "test": "jest",
+    "commit": "npx git-cz"
   },
   "lint-staged": {
     "*.js": [
