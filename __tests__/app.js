@@ -21,7 +21,8 @@ describe('generator-node-next:app', () => {
       'src/index.js',
       'src/sum.js',
       '__tests__/sum.spec.js',
-      'Dockerfile'
+      'Dockerfile',
+      '.dockerignore'
     ]);
   });
 });
