@@ -106,6 +106,10 @@ module.exports = class extends Generator {
     }
     if (this.props.docker) {
       this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'));
+      this.fs.copy(
+        this.templatePath('.dockerignore'),
+        this.destinationPath('.dockerignore')
+      );
     }
     if (this.props.travis) {
       this.fs.copy(this.templatePath('.travis.yml'), this.destinationPath('.travis.yml'));
