@@ -4,6 +4,13 @@ node_js:
   - v9
   - v8
   - v6
+before_install:
+# package-lock.json was introduced in npm@5
+- '[[ $(node -v) =~ ^v9.*$ ]] || [[ $(node -v) =~ ^v10.*$ ]] || npm install -g npm@latest' # skipped when using node 9 or 10
+- npm install -g greenkeeper-lockfile
 install:
-  yarn
-after_script: cat ./coverage/lcov.info | coveralls
+  npm i
+before_script: greenkeeper-lockfile-update
+after_script: 
+- greenkeeper-lockfile-upload
+- cat ./coverage/lcov.info | coveralls
