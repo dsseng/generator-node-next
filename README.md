@@ -1,7 +1,8 @@
-# generator-node-next [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
+# generator-node-next [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url] [![Greenkeeper badge](https://badges.greenkeeper.io/sh7dm/generator-node-next.svg)](https://greenkeeper.io/)
 > Cool Node.js kickstart with Backpack, Babel, CI, Eslint, Snyk and more
 > If you have some ideas for this project, write them to me please 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com) [![Greenkeeper badge](https://badges.greenkeeper.io/sh7dm/generator-node-next.svg)](https://greenkeeper.io/)
+
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 ## Installation
 
