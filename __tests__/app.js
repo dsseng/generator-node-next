@@ -36,4 +36,13 @@ describe('generator-node-next:app', () => {
         assert.noFile(['.travis.yml']);
       });
   });
+
+  it('creates Dockerfile and .dockerignore only if Docker deployment is enabled', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ docker: false })
+      .then(function() {
+        assert.noFile(['Dockerfile', '.dockerignore']);
+      });
+  });
 });
