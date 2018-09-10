@@ -45,4 +45,21 @@ describe('generator-node-next:app', () => {
         assert.noFile(['Dockerfile', '.dockerignore']);
       });
   });
+
+  it('creates .babelrc with valid content if babel-minify is enabled', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ minify: true })
+      .then(function() {
+        assert.fileContent('.babelrc', /"minify"/);
+      });
+  });
+  it('creates .babelrc with valid content if babel-minify is disabled', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ minify: false })
+      .then(function() {
+        assert.noFileContent('.babelrc', /"minify"/);
+      });
+  });
 });
