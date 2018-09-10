@@ -27,4 +27,13 @@ describe('generator-node-next:app', () => {
         ]);
       });
   });
+
+  it('creates .travis.yml only if Travis CI is enabled', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ travis: false })
+      .then(function() {
+        assert.noFile(['.travis.yml']);
+      });
+  });
 });
