@@ -62,4 +62,31 @@ describe('generator-node-next:app', () => {
         assert.noFileContent('.babelrc', /"minify"/);
       });
   });
+
+  it('creates valid dependencies and scripts in package.json if unit testing is enabled', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ unit: true })
+      .then(function() {
+        assert.fileContent('package.json', /"test:unit": "jest"/);
+        assert.fileContent('package.json', /yarn run test:unit/);
+        assert.fileContent('package.json', /"babel-jest"/);
+        assert.fileContent('package.json', /"jest"/);
+        assert.fileContent('package.json', /"eslint-plugin-jest"/);
+      });
+  });
+  it('creates package.json with valid name, description and author', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({
+        name: 'test',
+        descr: 'lorem ipsum dolor sit amet',
+        author: 'Jonh Doe'
+      })
+      .then(function() {
+        assert.fileContent('package.json', /"name": "test"/);
+        assert.fileContent('package.json', /"description": "lorem ipsum dolor sit amet"/);
+        assert.fileContent('package.json', /"author": "Jonh Doe"/);
+      });
+  });
 });
