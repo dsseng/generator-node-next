@@ -89,4 +89,35 @@ describe('generator-node-next:app', () => {
         assert.fileContent('package.json', /"author": "Jonh Doe"/);
       });
   });
+
+  it('creates README.md with valid name, description, author and badges', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({
+        name: 'test',
+        descr: 'lorem ipsum dolor sit amet',
+        author: 'doe'
+      })
+      .then(function() {
+        assert.fileContent('README.md', /# test/, /<%= lorem ipsum dolor sit amet %>/);
+
+        assert.fileContent('README.md', /badge.fury.io\/js\/test.svg/);
+        assert.fileContent('README.md', /npmjs.org\/package\/test/);
+        assert.fileContent(
+          'README.md',
+          /https:\/\/travis-ci.org\/doe\/test.svg\?branch=master/
+        );
+        assert.fileContent('README.md', /https:\/\/travis-ci.org\/doe\/test/);
+        assert.fileContent(
+          'README.md',
+          /https:\/\/david-dm.org\/doe\/test.svg\?theme=shields.io/
+        );
+        assert.fileContent('README.md', /https:\/\/david-dm.org\/doe\/test/);
+        assert.fileContent(
+          'README.md',
+          /https:\/\/coveralls.io\/repos\/doe\/test\/badge.svg/
+        );
+        assert.fileContent('README.md', /https:\/\/coveralls.io\/r\/doe\/test/);
+      });
+  });
 });
