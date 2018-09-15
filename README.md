@@ -11,6 +11,9 @@ First, install [Yeoman](http://yeoman.io) and generator-node-next using [npm](ht
 ```bash
 npm install -g yo
 npm install -g generator-node-next
+# or using yarn
+yarn global add yo
+yarn global add generator-node-next
 ```
 
 Then generate your new project:
