@@ -120,4 +120,21 @@ describe('generator-node-next:app', () => {
         assert.fileContent('README.md', /https:\/\/coveralls.io\/r\/doe\/test/);
       });
   });
+
+  it('creates test spec if unit testing is enabled', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ unit: true })
+      .then(function() {
+        assert.file(['__tests__/sum.spec.js']);
+      });
+  });
+  it("doesn't create test spec if unit testing is disabled", () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ unit: false })
+      .then(function() {
+        assert.noFile(['__tests__/sum.spec.js']);
+      });
+  });
 });
