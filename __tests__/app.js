@@ -62,16 +62,27 @@ describe('generator-node-next:app', () => {
       });
   });
 
-  it('creates valid dependencies and scripts in package.json if unit testing is enabled', () => {
+  it('creates valid dependencies and scripts in package.json if unit testing with Jest is enabled', () => {
     return helpers
       .run(generatorPath)
-      .withPrompts({ unit: true })
+      .withPrompts({ unit: true, runner: 'jest' })
       .then(function() {
         assert.fileContent('package.json', /"test:unit": "jest"/);
         assert.fileContent('package.json', /yarn run test:unit/);
         assert.fileContent('package.json', /"babel-jest"/);
         assert.fileContent('package.json', /"jest"/);
         assert.fileContent('package.json', /"eslint-plugin-jest"/);
+      });
+  });
+
+  it('creates valid dependencies and scripts in package.json if unit testing with AVA is enabled', () => {
+    return helpers
+      .run(generatorPath)
+      .withPrompts({ unit: true, runner: 'ava' })
+      .then(function() {
+        assert.fileContent('package.json', /"test:unit": "ava"/);
+        assert.fileContent('package.json', /yarn run test:unit/);
+        assert.fileContent('package.json', /"ava"/);
       });
   });
   it('creates package.json with valid name, description and author', () => {
