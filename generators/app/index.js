@@ -4,7 +4,7 @@ const chalk = require('chalk');
 const yosay = require('yosay');
 
 module.exports = class extends Generator {
-  prompting() {
+  async prompting() {
     // Have Yeoman greet the user.
     this.log(
       yosay(
@@ -45,7 +45,7 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'unit',
-        message: 'Would you like to enable unit tests (Jest)?',
+        message: 'Would you like to enable unit tests?',
         default: true
       },
       {
@@ -68,10 +68,20 @@ module.exports = class extends Generator {
       }
     ];
 
-    return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
-      this.props = props;
-    });
+    let props = await this.prompt(prompts);
+
+    if (props.unit) {
+      props.runner = (await this.prompt([
+        {
+          type: 'list',
+          name: 'runner',
+          message: 'Test runner to use:',
+          choices: ['jest', 'ava']
+        }
+      ])).runner;
+    }
+
+    this.props = props;
   }
 
   writing() {
@@ -101,9 +111,12 @@ module.exports = class extends Generator {
     );
     this.fs.copy(this.templatePath('src'), this.destinationPath('src'));
 
-    if (this.props.unit) {
+    if (this.props.unit && this.props.runner === 'jest') {
       this.fs.copy(this.templatePath('__tests__'), this.destinationPath('__tests__'));
+    } else if (this.props.unit && this.props.runner === 'ava') {
+      this.fs.copy(this.templatePath('test'), this.destinationPath('test'));
     }
+
     if (this.props.docker) {
       this.fs.copy(this.templatePath('Dockerfile'), this.destinationPath('Dockerfile'));
       this.fs.copy(
