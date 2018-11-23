@@ -21,7 +21,6 @@ describe('generator-node-next:app', () => {
           '.travis.yml',
           'src/index.js',
           'src/sum.js',
-          '__tests__/sum.spec.js',
           'Dockerfile',
           '.dockerignore'
         ]);
@@ -121,20 +120,20 @@ describe('generator-node-next:app', () => {
       });
   });
 
-  it('creates test spec if unit testing is enabled', () => {
+  it('creates Jest test spec if unit testing with Jest is enabled', () => {
     return helpers
       .run(generatorPath)
-      .withPrompts({ unit: true })
+      .withPrompts({ unit: true, runner: 'jest' })
       .then(function() {
         assert.file(['__tests__/sum.spec.js']);
       });
   });
-  it("doesn't create test spec if unit testing is disabled", () => {
+  it('creates AVA test spec if unit testing with AVA is enabled', () => {
     return helpers
       .run(generatorPath)
-      .withPrompts({ unit: false })
+      .withPrompts({ unit: true, runner: 'ava' })
       .then(function() {
-        assert.noFile(['__tests__/sum.spec.js']);
+        assert.file(['test/sum.test.js']);
       });
   });
 });
