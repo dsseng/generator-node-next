@@ -1,7 +1,7 @@
 {
-  <% if (unit) { %>"plugins": ["jest"],<% } %>
+  <% if (unit && runner == "jest") { %>"plugins": ["jest"],<% } %>
   "rules": {
-    <% if (unit) { %>"jest/no-disabled-tests": "warn",
+    <% if (unit && runner == "jest") { %>"jest/no-disabled-tests": "warn",
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",

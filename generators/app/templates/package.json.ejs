@@ -7,7 +7,13 @@
 		"dev": "backpack",
     "test:lint": "eslint **/*.js",
     "test:safety": "snyk test",
-    <% if (unit) { %>"test:unit": "jest",<% } %>
+		<% if (unit) { %>
+			<% if (runner == "jest") { %>
+				"test:unit": "jest",
+			<% } else { %>
+				"test:unit": "ava",
+			<% } %>
+		<% } %>
     "test": "yarn run test:lint; yarn run test:safety; <% if (unit) { %>yarn run test:unit <% } %>",
     "build": "backpack build",
     "prepublish": "yarn run test"
@@ -15,16 +21,17 @@
 	"author": "<%= author %>",
 	"license": "MIT",
 	"devDependencies": {
+    <% if (unit && runner == "ava") { %>"ava": "^0.25.0",<% } %>
 		"babel-core": "^6.26.0",
 		"babel-eslint": "^8.2.1",
-    <% if (unit) { %>"babel-jest": "^22.2.2",<% } %>
+    <% if (unit && runner == "jest") { %>"babel-jest": "^22.2.2",<% } %>
 		"babel-minify": "^0.3.0",
 		"babel-preset-env": "^1.6.1",
 		"babel-preset-minify": "^0.3.0",
 		"babel-preset-stage-2": "^6.24.1",
 		"backpack-core": "^0.5.0",
 		"eslint": "^4.17.0",
-    <% if (unit) { %>"eslint-plugin-jest": "^21.9.0",
+    <% if (unit && runner == "jest") { %>"eslint-plugin-jest": "^21.9.0",
 		"jest": "^22.2.2",<% } %>
 		"snyk": "^1.69.7"
 	}
