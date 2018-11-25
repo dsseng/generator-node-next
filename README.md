@@ -22,6 +22,12 @@ Then generate your new project:
 yo node-next
 ```
 
+You can generate project using TypeScript:
+
+```bash
+yo node-next:ts-app
+```
+
 ## Getting To Know Yeoman
 
  * Yeoman has a heart of gold.
