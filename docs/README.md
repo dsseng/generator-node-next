@@ -44,5 +44,3 @@ In TypeScript project you can use:
 - [EditorConfig](https://editorconfig.org/)
 - [TSLint](https://github.com/palantir/tslint)
 - [Travis CI](https://travis-ci.org/)
-
-## [Usage guides & examples](guides/)
