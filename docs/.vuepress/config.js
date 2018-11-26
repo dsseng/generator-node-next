@@ -11,7 +11,8 @@ module.exports = {
         title: 'Guides & examples',
         collapsable: true,
         children: [
-          '/guides/backpack'
+          '/guides/backpack',
+          '/guides/docker'
         ]
       }
     ]
