@@ -6,7 +6,14 @@ module.exports = {
   },
   themeConfig: {
     sidebar: [
-      '/'
+      '/',
+      {
+        title: 'Guides & examples',
+        collapsable: true,
+        children: [
+          '/guides/backpack'
+        ]
+      }
     ]
   }
 }
