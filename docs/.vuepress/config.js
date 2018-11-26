@@ -3,5 +3,10 @@ module.exports = {
   description: 'Cool Node.js kickstart with Backpack, Babel, CI, Eslint, Snyk and more',
   markdown: {
     lineNumbers: true
+  },
+  themeConfig: {
+    sidebar: [
+      '/'
+    ]
   }
 }
