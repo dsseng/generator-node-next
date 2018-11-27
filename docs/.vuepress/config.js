@@ -19,5 +19,14 @@ module.exports = {
   },
   head: [
     ['link', { rel: 'shortcut icon', type: "image/png", href: `/icon.png` }]
-  ]
+  ],
+  plugins: {
+    '@vuepress/pwa': {
+      serviceWorker: true,
+      updatePopup: {
+        message: "New content is available.",
+        buttonText: "Refresh"
+      }
+    }
+  }
 }

@@ -19,6 +19,7 @@
     "yeoman-generator"
   ],
   "devDependencies": {
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.0",
     "babel-preset-env": "^1.7.0",
     "commitizen": "^3.0.0",
     "coveralls": "^3.0.2",
