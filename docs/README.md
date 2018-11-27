@@ -1,4 +1,6 @@
 # generator-node-next
+![Logo](./logo.png)
+
 > Cool Node.js kickstart with Backpack, Babel, CI, Eslint, Snyk and more
 
 ## Getting started
