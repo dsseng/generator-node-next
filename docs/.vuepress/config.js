@@ -12,7 +12,8 @@ module.exports = {
         collapsable: true,
         children: [
           '/guides/backpack',
-          '/guides/docker'
+          '/guides/docker',
+          '/guides/travis'
         ]
       }
     ],
