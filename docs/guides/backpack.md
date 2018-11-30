@@ -1,3 +1,9 @@
+---
+title: Customize Backpack config
+lang: en-US
+description: How to customize Backpack config
+---
+
 # Customize Backpack config
 ![Backpack logo](https://cloud.githubusercontent.com/assets/4060187/21872211/318795e8-d835-11e6-8376-bea370605361.png)
 

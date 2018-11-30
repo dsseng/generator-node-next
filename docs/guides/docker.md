@@ -1,3 +1,9 @@
+---
+title: Dockerize your app
+lang: en-US
+description: How to Dockerize your project
+---
+
 # Dockerize your app
 ![Docker logo](https://www.docker.com/sites/default/files/social/docker_twitter_share_new.png)
 

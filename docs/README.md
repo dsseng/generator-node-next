@@ -1,3 +1,9 @@
+---
+title: generator-node-next
+lang: en-US
+description: Introduction to generator-node-next
+---
+
 # generator-node-next
 ![Logo](./logo.png)
 
