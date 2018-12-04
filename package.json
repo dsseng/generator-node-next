@@ -57,7 +57,7 @@
     "commit": "npx git-cz",
     "release": "release-it",
     "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs"
+    "build": "vuepress build docs"
   },
   "lint-staged": {
     "*.js": [
