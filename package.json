@@ -56,8 +56,9 @@
     "test": "jest",
     "commit": "npx git-cz",
     "release": "release-it",
-    "docs:dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "now-build": "npm run build && mv docs/.vuepress/dist dist"
   },
   "lint-staged": {
     "*.js": [

@@ -1,3 +1,5 @@
 {
-  "name": "generator-node-next"
+  "name": "generator-node-next",
+  "version": "2",
+  "builds": [{ "src": "package.json", "use": "@now/static-build" }]
 }
