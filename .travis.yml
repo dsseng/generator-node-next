@@ -13,4 +13,4 @@ before_script: greenkeeper-lockfile-update
 after_script:
 - greenkeeper-lockfile-upload
 - cat ./coverage/lcov.info | coveralls
-- if [[ $TRAVIS_BRANCH == 'master' ] && [ TRAVIS_PULL_REQUEST == false ]]; then now --name=generator-node-next --token=$NOW_TOKEN; fi
+- if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == false ]]; then now --name=generator-node-next --token=$NOW_TOKEN; fi
