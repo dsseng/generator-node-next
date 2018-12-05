@@ -10,6 +10,7 @@ before_install:
 install:
   npm i
 before_script: greenkeeper-lockfile-update
-after_script: 
+after_script:
 - greenkeeper-lockfile-upload
 - cat ./coverage/lcov.info | coveralls
+- if [[ $TRAVIS_BRANCH == 'master' ]]; then now --name=generator-node-next --token=$NOW_TOKEN; fi
