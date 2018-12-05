@@ -6,7 +6,7 @@ node_js:
 before_install:
 # package-lock.json was introduced in npm@5
 - '[[ $(node -v) =~ ^v9.*$ ]] || [[ $(node -v) =~ ^v10.*$ ]] || [[ $(node -v) =~ ^v11.*$ ]] || npm install -g npm@latest' # skipped when using node 9 or 10
-- npm install -g greenkeeper-lockfile
+- npm install -g greenkeeper-lockfile now
 install:
   npm i
 before_script: greenkeeper-lockfile-update
