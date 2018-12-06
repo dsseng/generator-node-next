@@ -5,7 +5,7 @@
 	"main": "src/index.js",
 	"scripts": {
 		"dev": "backpack",
-    "test:lint": "eslint **/*.js",
+    "test:lint": "eslint src/**/*.js <% if (unit && runner == "ava") { %>test/**/*.js<% } %> <% if (unit && runner == "jest") { %>__tests__/**/*.js<% } %>",
     "test:safety": "snyk test",
 		<% if (unit) { %>
 			<% if (runner == "jest") { %>
@@ -21,18 +21,26 @@
 	"author": "<%= author %>",
 	"license": "MIT",
 	"devDependencies": {
-    <% if (unit && runner == "ava") { %>"ava": "^0.25.0",<% } %>
-		"babel-core": "^6.26.0",
-		"babel-eslint": "^8.2.1",
-    <% if (unit && runner == "jest") { %>"babel-jest": "^22.2.2",<% } %>
-		"babel-minify": "^0.3.0",
-		"babel-preset-env": "^1.6.1",
-		"babel-preset-minify": "^0.3.0",
-		"babel-preset-stage-2": "^6.24.1",
-		"backpack-core": "^0.5.0",
-		"eslint": "^4.17.0",
-    <% if (unit && runner == "jest") { %>"eslint-plugin-jest": "^21.9.0",
-		"jest": "^22.2.2",<% } %>
-		"snyk": "^1.69.7"
+    <% if (unit && runner == "ava") { %>"ava": "^1.0.0-rc.2",<% } %>
+		"@babel/core": "^7.0.0",
+		"@babel/plugin-proposal-class-properties": "^7.0.0",
+		"@babel/plugin-proposal-decorators": "^7.0.0",
+		"@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+		"@babel/plugin-proposal-function-sent": "^7.0.0",
+		"@babel/plugin-proposal-json-strings": "^7.0.0",
+		"@babel/plugin-proposal-numeric-separator": "^7.0.0",
+		"@babel/plugin-proposal-throw-expressions": "^7.0.0",
+		"@babel/plugin-syntax-dynamic-import": "^7.0.0",
+		"@babel/plugin-syntax-import-meta": "^7.0.0",
+		"@babel/preset-env": "^7.0.0",
+		"babel-core": "^7.0.0-bridge.0",
+		"babel-eslint": "^10.0.1",
+    <% if (unit && runner == "jest") { %>"babel-jest": "^23.6.0",<% } %>
+		<% if (minify) { %>"babel-preset-minify": "^0.5.0",<% } %>
+		"backpack-core": "^0.8.3",
+		"eslint": "^5.9.0",
+    <% if (unit && runner == "jest") { %>"eslint-plugin-jest": "^22.1.2",
+		"jest": "^23.6.0",<% } %>
+		"snyk": "^1.116.0"
 	}
 }

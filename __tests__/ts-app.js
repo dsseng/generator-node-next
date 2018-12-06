@@ -59,13 +59,10 @@ describe('generator-node-next:ts-app', () => {
       .run(generatorPath)
       .withPrompts({ unit: true, runner: 'ava' })
       .then(function() {
-        assert.fileContent(
-          'package.json',
-          '"test:unit": "tsc --lib es2015 test/*.ts && ava && rimraf test/*.js"'
-        );
+        assert.fileContent('package.json', '"test:unit": "ava');
         assert.fileContent('package.json', /yarn run test:unit/);
         assert.fileContent('package.json', /"ava"/);
-        assert.fileContent('package.json', /"rimraf"/);
+        assert.fileContent('package.json', /"ts-node"/);
       });
   });
   it('creates package.json with valid name, description and author', () => {

@@ -11,30 +11,39 @@
 			<% if (runner == "jest") { %>
 		    "test:unit": "jest",
 			<% } else { %>
-        "test:unit": "tsc --lib es2015 test/*.ts && ava && rimraf test/*.js",
+        "test:unit": "ava",
 		  <% } %>
 		<% } %>
     "test": "yarn run test:lint; yarn run test:safety; <% if (unit) { %>yarn run test:unit <% } %>",
     "build": "backpack build",
     "prepublish": "yarn run test"
 	},
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
 	"author": "<%= author %>",
   "license": "MIT",
 	"devDependencies": {
     <% if (unit && runner == "ava") { %>
-      "ava": "^0.25.0",
-      "rimraf": "^2.6.2",
+      "ava": "^1.0.0-rc.2"
+      "ts-node": "^7.0.1",
     <% } %>
 		"awesome-typescript-loader": "^5.2.1",
-		"backpack-core": "^0.5.0",
+		"backpack-core": "^0.8.2",
     <% if (unit && runner == "jest") { %>
       "jest": "^23.x",
       "@types/jest": "^23.x",
       "ts-jest": "^23.10.5",
     <% } %>
-    "typescript": "^3.1.6",
-    "tslint": "^5.8.0",
-    "tslint-config-prettier": "^1.13.0",
-		"snyk": "^1.69.7"
+    "typescript": "^3.2.1",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.17.0",
+		"snyk": "^1.116.0"
   }
 }
