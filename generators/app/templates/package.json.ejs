@@ -5,7 +5,7 @@
 	"main": "src/index.js",
 	"scripts": {
 		"dev": "backpack",
-    "test:lint": "eslint **/*.js",
+    "test:lint": "eslint src/**/*.js <% if (unit && runner == "ava") { %>test/**/*.js<% } %> <% if (unit && runner == "jest") { %>__tests__/**/*.js<% } %>",
     "test:safety": "snyk test",
 		<% if (unit) { %>
 			<% if (runner == "jest") { %>
@@ -38,7 +38,7 @@
     <% if (unit && runner == "jest") { %>"babel-jest": "^23.6.0",<% } %>
 		<% if (minify) { %>"babel-preset-minify": "^0.5.0",<% } %>
 		"backpack-core": "^0.8.3",
-		"eslint": "^4.17.0",
+		"eslint": "^5.9.0",
     <% if (unit && runner == "jest") { %>"eslint-plugin-jest": "^22.1.2",
 		"jest": "^23.6.0",<% } %>
 		"snyk": "^1.116.0"
