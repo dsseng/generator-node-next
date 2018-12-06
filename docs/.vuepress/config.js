@@ -16,7 +16,8 @@ module.exports = {
           '/guides/travis',
           '/guides/eslint',
           '/guides/tslint',
-          '/guides/editorconfig'
+          '/guides/editorconfig',
+          '/guides/babel'
         ]
       }
     ],
