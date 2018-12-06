@@ -13,7 +13,8 @@ module.exports = {
         children: [
           '/guides/backpack',
           '/guides/docker',
-          '/guides/travis'
+          '/guides/travis',
+          '/guides/eslint'
         ]
       }
     ],
