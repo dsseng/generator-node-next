@@ -5,6 +5,7 @@ description: How to customize ESLint config
 ---
 
 # Customize ESLint config
+![ESLint logo](https://eslint.org/img/logo.svg)
 ::: warning
 ESLint is only available for JS projects. For TS projects, look at [TSLint guide](tslint.md).
 :::
