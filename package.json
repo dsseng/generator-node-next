@@ -29,7 +29,6 @@
     "husky": "^1.0.0",
     "jest": "^23.5.0",
     "lint-staged": "^8.0.0",
-    "nsp": "^3.2.1",
     "prettier": "^1.14.2",
     "release-it": "^8.0.1",
     "yeoman-assert": "^3.1.1",
@@ -48,7 +47,7 @@
     ]
   },
   "scripts": {
-    "prepublish": "nsp check",
+    "prepublish": "npm audit --fix",
     "pretest": "eslint .",
     "precommit": "lint-staged",
     "test": "jest",
