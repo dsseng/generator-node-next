@@ -14,7 +14,8 @@ module.exports = {
           '/guides/backpack',
           '/guides/docker',
           '/guides/travis',
-          '/guides/eslint'
+          '/guides/eslint',
+          '/guides/tslint'
         ]
       }
     ],

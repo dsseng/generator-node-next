@@ -6,9 +6,8 @@ description: How to customize ESLint config
 
 # Customize ESLint config
 ::: warning
-ESLint is only available for JS projects. <!-- TODO: add TSLint guide -->
+ESLint is only available for JS projects. For TS projects, look at [TSLint guide](tslint.md).
 :::
-
 In JS project you will have `.eslintrc` and `.eslintignore` files. You can enable/disable rules, use plugins and do many other things using `.eslintrc` file. If you want ESLint not to lint some files or directories, add them to `.eslintignore` file.
 
 ## Add plugin (Prettier)
