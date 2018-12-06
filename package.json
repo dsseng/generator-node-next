@@ -19,6 +19,7 @@
     "yeoman-generator"
   ],
   "devDependencies": {
+    "@vuepress/plugin-pwa": "^1.0.0-alpha.0",
     "babel-preset-env": "^1.7.0",
     "commitizen": "^3.0.0",
     "coveralls": "^3.0.2",
@@ -32,6 +33,7 @@
     "npm": "^6.4.1",
     "prettier": "^1.14.2",
     "release-it": "^8.0.1",
+    "vuepress": "^1.0.0-alpha.23",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"
   },
@@ -53,7 +55,10 @@
     "precommit": "lint-staged",
     "test": "jest",
     "commit": "npx git-cz",
-    "release": "release-it"
+    "release": "release-it",
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "now-build": "npm run build && mv docs/.vuepress/dist dist"
   },
   "lint-staged": {
     "*.js": [

@@ -6,10 +6,11 @@ node_js:
 before_install:
 # package-lock.json was introduced in npm@5
 - '[[ $(node -v) =~ ^v9.*$ ]] || [[ $(node -v) =~ ^v10.*$ ]] || [[ $(node -v) =~ ^v11.*$ ]] || npm install -g npm@latest' # skipped when using node 9, 10 or 11
-- npm install -g greenkeeper-lockfile
+- npm install -g greenkeeper-lockfile now
 install:
   npm i
 before_script: greenkeeper-lockfile-update
 after_script:
 - greenkeeper-lockfile-upload
 - cat ./coverage/lcov.info | coveralls
+- if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == false ]]; then now --name=generator-node-next --token=$NOW_TOKEN; fi
