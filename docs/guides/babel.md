@@ -6,6 +6,7 @@ description: Configuring Babel
 
 # Configuring Babel
 ![Babel logo](https://raw.githubusercontent.com/babel/logo/master/babel.png)
+
 In default JS project you have a `.babelrc` file in root directory of your project. You can define Babel config using it. By default there are `env` and `stage-2` presets, and if you enabled it, `minify` preset.
 
 ::: tip READ MORE
