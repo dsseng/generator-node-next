@@ -17,7 +17,8 @@ module.exports = {
           '/guides/eslint',
           '/guides/tslint',
           '/guides/editorconfig',
-          '/guides/babel'
+          '/guides/babel',
+          '/guides/typescript'
         ]
       }
     ],
