@@ -17,6 +17,10 @@ Backpack comes with the "battery-pack included":
 
 You can customize build process of your app using Backpack config file. In TS project `backpack.config.js` is created by default, but in JS project you need to create it by yourself:
 
+::: warning
+`backpack.config.js` is not going through Babel transformation. You can only use features supported by your Node.js version.
+:::
+
 ```js {2,3}
 // backpack.config.js
 // IMPORTANT: This file is not going through babel transformation.
