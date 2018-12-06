@@ -15,7 +15,8 @@ module.exports = {
           '/guides/docker',
           '/guides/travis',
           '/guides/eslint',
-          '/guides/tslint'
+          '/guides/tslint',
+          '/guides/editorconfig'
         ]
       }
     ],
