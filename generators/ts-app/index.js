@@ -59,12 +59,6 @@ module.exports = class extends Generator {
         name: 'travis',
         message: 'Would you like to enable Travis CI?',
         default: true
-      },
-      {
-        type: 'confirm',
-        name: 'minify',
-        message: 'Would you like to enable code minification?',
-        default: true
       }
     ];
 
@@ -85,22 +79,8 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    let ins = [
-      'package.json.ejs',
-      '.eslintrc.ejs',
-      '.eslintignore.ejs',
-      '.gitignore.ejs',
-      'README.md.ejs',
-      '.babelrc.ejs'
-    ];
-    let outs = [
-      'package.json',
-      '.eslintrc',
-      '.eslintignore',
-      '.gitignore',
-      'README.md',
-      '.babelrc'
-    ];
+    let ins = ['package.json.ejs', '.gitignore.ejs', 'README.md.ejs'];
+    let outs = ['package.json', '.gitignore', 'README.md'];
     ins.forEach((inp, i) => {
       this.fs.copyTpl(this.templatePath(inp), this.destinationPath(outs[i]), this.props);
     });
@@ -110,9 +90,22 @@ module.exports = class extends Generator {
       this.destinationPath('.editorconfig')
     );
     this.fs.copy(this.templatePath('src'), this.destinationPath('src'));
+    this.fs.copy(
+      this.templatePath('tsconfig.json'),
+      this.destinationPath('tsconfig.json')
+    );
+    this.fs.copy(this.templatePath('tslint.json'), this.destinationPath('tslint.json'));
+    this.fs.copy(
+      this.templatePath('backpack.config.js'),
+      this.destinationPath('backpack.config.js')
+    );
 
     if (this.props.unit && this.props.runner === 'jest') {
       this.fs.copy(this.templatePath('__tests__'), this.destinationPath('__tests__'));
+      this.fs.copy(
+        this.templatePath('jest.config.js'),
+        this.destinationPath('jest.config.js')
+      );
     } else if (this.props.unit && this.props.runner === 'ava') {
       this.fs.copy(this.templatePath('test'), this.destinationPath('test'));
     }

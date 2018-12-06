@@ -1,6 +1,6 @@
 {
   "name": "generator-node-next",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Cool Node.js kickstart with Backpack, Babel, CI, Eslint, Snyk and more",
   "homepage": "https://github.com/sh7dm/generator-node-next",
   "author": {
@@ -19,6 +19,7 @@
     "yeoman-generator"
   ],
   "devDependencies": {
+    "babel-preset-env": "^1.7.0",
     "commitizen": "^3.0.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.5.0",
@@ -30,6 +31,7 @@
     "lint-staged": "^8.0.0",
     "nsp": "^3.2.1",
     "prettier": "^1.14.2",
+    "release-it": "^8.0.1",
     "yeoman-assert": "^3.1.1",
     "yeoman-test": "^1.9.1"
   },
@@ -50,7 +52,8 @@
     "pretest": "eslint .",
     "precommit": "lint-staged",
     "test": "jest",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "release": "release-it"
   },
   "lint-staged": {
     "*.js": [

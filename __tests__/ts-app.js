@@ -2,9 +2,9 @@
 const path = require('path');
 const assert = require('yeoman-assert');
 const helpers = require('yeoman-test');
-const generatorPath = path.join(__dirname, '../generators/app');
+const generatorPath = path.join(__dirname, '../generators/ts-app');
 
-describe('generator-node-next:app', () => {
+describe('generator-node-next:ts-app', () => {
   it('creates files', () => {
     return helpers
       .run(generatorPath)
@@ -12,17 +12,15 @@ describe('generator-node-next:app', () => {
       .then(function() {
         assert.file([
           'package.json',
-          '.eslintrc',
-          '.eslintignore',
+          'backpack.config.js',
           '.gitignore',
           'README.md',
-          '.babelrc',
+          'tslint.json',
           '.editorconfig',
           '.travis.yml',
-          'src/index.js',
-          'src/sum.js',
-          'Dockerfile',
-          '.dockerignore'
+          'src/index.ts',
+          'src/sum.ts',
+          'tsconfig.json'
         ]);
       });
   });
@@ -45,23 +43,6 @@ describe('generator-node-next:app', () => {
       });
   });
 
-  it('creates .babelrc with valid content if babel-minify is enabled', () => {
-    return helpers
-      .run(generatorPath)
-      .withPrompts({ minify: true })
-      .then(function() {
-        assert.fileContent('.babelrc', /"minify"/);
-      });
-  });
-  it('creates .babelrc with valid content if babel-minify is disabled', () => {
-    return helpers
-      .run(generatorPath)
-      .withPrompts({ minify: false })
-      .then(function() {
-        assert.noFileContent('.babelrc', /"minify"/);
-      });
-  });
-
   it('creates valid dependencies and scripts in package.json if unit testing with Jest is enabled', () => {
     return helpers
       .run(generatorPath)
@@ -69,9 +50,7 @@ describe('generator-node-next:app', () => {
       .then(function() {
         assert.fileContent('package.json', /"test:unit": "jest"/);
         assert.fileContent('package.json', /yarn run test:unit/);
-        assert.fileContent('package.json', /"babel-jest"/);
         assert.fileContent('package.json', /"jest"/);
-        assert.fileContent('package.json', /"eslint-plugin-jest"/);
       });
   });
 
@@ -80,9 +59,13 @@ describe('generator-node-next:app', () => {
       .run(generatorPath)
       .withPrompts({ unit: true, runner: 'ava' })
       .then(function() {
-        assert.fileContent('package.json', /"test:unit": "ava"/);
+        assert.fileContent(
+          'package.json',
+          '"test:unit": "tsc --lib es2015 test/*.ts && ava && rimraf test/*.js"'
+        );
         assert.fileContent('package.json', /yarn run test:unit/);
         assert.fileContent('package.json', /"ava"/);
+        assert.fileContent('package.json', /"rimraf"/);
       });
   });
   it('creates package.json with valid name, description and author', () => {
@@ -131,12 +114,13 @@ describe('generator-node-next:app', () => {
       });
   });
 
-  it('creates Jest test spec if unit testing with Jest is enabled', () => {
+  it('creates Jest test spec and config if unit testing with Jest is enabled', () => {
     return helpers
       .run(generatorPath)
       .withPrompts({ unit: true, runner: 'jest' })
       .then(function() {
-        assert.file(['__tests__/sum.spec.js']);
+        assert.file(['__tests__/sum.spec.ts']);
+        assert.file(['jest.config.js']);
       });
   });
   it('creates AVA test spec if unit testing with AVA is enabled', () => {
@@ -144,7 +128,7 @@ describe('generator-node-next:app', () => {
       .run(generatorPath)
       .withPrompts({ unit: true, runner: 'ava' })
       .then(function() {
-        assert.file(['test/sum.test.js']);
+        assert.file(['test/sum.test.ts']);
       });
   });
 });

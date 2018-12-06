@@ -1,0 +1,40 @@
+{
+	"name": "<%= name %>",
+	"version": "0.0.0",
+	"description": "<%= descr %>",
+	"main": "src/index.js",
+	"scripts": {
+		"dev": "backpack",
+    "test:lint": "tslint -c tslint.json src/**/*.ts",
+    "test:safety": "snyk test",
+		<% if (unit) { %>
+			<% if (runner == "jest") { %>
+		    "test:unit": "jest",
+			<% } else { %>
+        "test:unit": "tsc --lib es2015 test/*.ts && ava && rimraf test/*.js",
+		  <% } %>
+		<% } %>
+    "test": "yarn run test:lint; yarn run test:safety; <% if (unit) { %>yarn run test:unit <% } %>",
+    "build": "backpack build",
+    "prepublish": "yarn run test"
+	},
+	"author": "<%= author %>",
+  "license": "MIT",
+	"devDependencies": {
+    <% if (unit && runner == "ava") { %>
+      "ava": "^0.25.0",
+      "rimraf": "^2.6.2",
+    <% } %>
+		"awesome-typescript-loader": "^5.2.1",
+		"backpack-core": "^0.5.0",
+    <% if (unit && runner == "jest") { %>
+      "jest": "^23.x",
+      "@types/jest": "^23.x",
+      "ts-jest": "^23.10.5",
+    <% } %>
+    "typescript": "^3.1.6",
+    "tslint": "^5.8.0",
+    "tslint-config-prettier": "^1.13.0",
+		"snyk": "^1.69.7"
+  }
+}
