@@ -1,6 +1,6 @@
 {
   "name": "generator-node-next",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Cool Node.js kickstart with Backpack, Babel, CI, Eslint, Snyk and more",
   "homepage": "https://github.com/sh7dm/generator-node-next",
   "author": {
