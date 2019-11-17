@@ -23,7 +23,7 @@
     "commitizen": "^3.0.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.5.0",
-    "eslint-config-prettier": "^3.0.1",
+    "eslint-config-prettier": "^6.6.0",
     "eslint-config-xo": "^0.26.0",
     "eslint-plugin-prettier": "^3.0.0",
     "husky": "^1.0.0",
