@@ -38,7 +38,8 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "yeoman-generator": "^3.1.1",
-    "yosay": "^2.0.2"
+    "yosay": "^2.0.2",
+    "snyk": "^1.316.1"
   },
   "jest": {
     "testEnvironment": "node",
@@ -48,12 +49,13 @@
     ]
   },
   "scripts": {
-    "prepublish": "npm audit --fix",
+    "prepublish": "npm run snyk-protect && npm audit --fix",
     "pretest": "eslint .",
     "precommit": "lint-staged",
     "test": "jest",
     "commit": "npx git-cz",
-    "release": "release-it"
+    "release": "release-it",
+    "snyk-protect": "snyk protect"
   },
   "lint-staged": {
     "*.js": [
@@ -88,5 +90,6 @@
     ]
   },
   "repository": "sh7dm/generator-node-next",
-  "license": "MIT"
+  "license": "MIT",
+  "snyk": true
 }
